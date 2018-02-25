@@ -1,0 +1,39 @@
+{
+  "name": "mern-contest",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/myskam7/MERN-contest.git"
+  },
+  "author": "Maksym Filippov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/myskam7/MERN-contest/issues"
+  },
+  "homepage": "https://github.com/myskam7/MERN-contest#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "mongodb": "^3.0.3",
+    "mongoose": "^5.0.7",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-eslint": "^8.2.2",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "bable-loader": "0.0.1-security",
+    "eslint": "^4.18.1",
+    "eslint-plugin-react": "^7.7.0",
+    "nodemon": "^1.15.1",
+    "webpack": "^3.11.0"
+  }
+}
