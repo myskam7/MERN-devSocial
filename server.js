@@ -1,14 +1,17 @@
 import express from 'express';
 import fs from 'fs';
 
-import apiRouter from 'express';
+import apiRouter from './api';
 import config from './config';
 
 const server = express();
 
 server.get('/', (req, res) => {
-    res.send('Hello Express');
+    res.render('index');
 });
+
+//Effective Javascript (EJS) 
+server.set('view engine', 'ejs')
 
 //Express middleware to access folders
 server.use('/api', apiRouter);

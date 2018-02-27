@@ -4,9 +4,8 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start":"nodemon --exec babel-node server.js --public/",
-    "dev":"webpack -md"
-
+    "start": "nodemon --exec babel-node server.js --public/",
+    "dev": "webpack -md"
   },
   "repository": {
     "type": "git",
@@ -20,6 +19,7 @@
   "homepage": "https://github.com/myskam7/MERN-contest#readme",
   "dependencies": {
     "body-parser": "^1.18.2",
+    "ejs": "^2.5.7",
     "express": "^4.16.2",
     "mongodb": "^3.0.3",
     "mongoose": "^5.0.7",
