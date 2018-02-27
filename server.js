@@ -6,14 +6,17 @@ import config from './config';
 
 const server = express();
 
-server.get('/', (req, res) => {
-    res.render('index', {
-        content: '<p>This is <em>EJS</em> running!</p>'
-    });
-});
+
 
 //Effective Javascript (EJS) 
-server.set('view engine', 'ejs')
+server.set('view engine', 'ejs');
+
+server.get('/', (req, res) => {
+    res.render('index', {
+        content: '...'
+
+    });
+});
 
 //Express middleware to access folders
 server.use('/api', apiRouter);
