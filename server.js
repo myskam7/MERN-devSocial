@@ -7,7 +7,9 @@ import config from './config';
 const server = express();
 
 server.get('/', (req, res) => {
-    res.render('index');
+    res.render('index', {
+        content: '<p>This is <em>EJS</em> running!</p>'
+    });
 });
 
 //Effective Javascript (EJS) 
