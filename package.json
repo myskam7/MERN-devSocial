@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "nodemon --exec babel-node server.js --public/",
-    "dev": "webpack -md"
+    "dev": "webpack -wd"
   },
   "repository": {
     "type": "git",
