@@ -1,11 +1,12 @@
-import React from 'react'; 
+import React, {Component} from 'react'; 
 import ReactDOM from 'react-dom';
+import PropTypes from 'prop-types';
 
-const color = Math.random() > 0.5 ? 'green' : 'red';
+import App from './components/App';
+
+
 
 ReactDOM.render(
-   <h2>
-    Hello React with JSX -- <p style={{color: color}}> {Math.random()}</p>
-   </h2>,
+    <App />,
     document.getElementById('root')
 );
