@@ -7,8 +7,17 @@ class App extends Component {
     state = {
             pageHeader: 'Naming Contests'
         };
-    
 
+        // componentDidMount(){
+        //     console.log('did mount');
+
+        // }
+        // componentWillUnmount(){
+        //     console.log('unmounted');
+
+        // }
+    
+    
     render(){
 
     return (
