@@ -1,11 +1,19 @@
 // fetch data from api 
-
-import config from './config';
+import React from 'react';
+import ReactDOMServer from 'react-dom/server';
 import axios from 'axios';
 
+import App from './src/components/App';
+import config from './config';
+
+const serverRender = () => 
 //'config.serverUrl' is the dynamic http://localhost:####
 axios.get(`${config.serverUrl}/api/contests`)
    .then(res => {
-       console.log(res.data);
+       return ReactDOMServer.renderToString(<App initialContests={res.data.contests} />
+    );
    })
-   .catch(err => err)
+   .catch(err =>
+     console.log(err));
+
+     export default serverRender;
