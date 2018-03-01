@@ -10,10 +10,11 @@ const serverRender = () =>
 //'config.serverUrl' is the dynamic http://localhost:####
 axios.get(`${config.serverUrl}/api/contests`)
    .then(res => {
-       return ReactDOMServer.renderToString(<App initialContests={res.data.contests} />
-    );
+       return {
+           initialMarkup: ReactDOMServer.renderToString(<App initialContests={res.data.contests} /> ),
+           initialData: res.data
+       }  
    })
-   .catch(err =>
-     console.log(err));
+   .catch(console.error);
 
      export default serverRender;
