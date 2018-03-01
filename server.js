@@ -9,7 +9,11 @@ import config from './config';
 const server = express();
 
 
-
+//SASS
+server.use(sassMiddleware({
+    src: path.join(__dirname, 'sass'),
+    dest: path.join(__dirname, 'public')
+}));
 
 
 //Effective Javascript (EJS) 
