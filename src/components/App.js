@@ -7,7 +7,7 @@ import ContestList from './ContestList';
 
 //history entries
 const pushState = (obj, url) => 
-    window.history.pushState(stateObj, '', url);
+    window.history.pushState(obj, '', url);
 
 
 
@@ -26,7 +26,7 @@ class App extends Component {
 
         }
 
-        fetchContest =(constesId) => {
+        fetchContest =(contestId) => {
             pushState(
                 { currentContestId: contestId },
                 `/contest/${contestId}`
