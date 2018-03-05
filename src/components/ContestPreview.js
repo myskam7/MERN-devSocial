@@ -1,7 +1,10 @@
-import React from 'react';
+import React, {Component} from 'react';
 
 
-const ContestPreview = (contest) => (
+class ContestPreview extends Component {
+
+    render() {
+        return(
     <div className="ContestPreview"> 
         <div className="category-name">
             {contest.categoryName}
@@ -10,6 +13,8 @@ const ContestPreview = (contest) => (
             {contest.contestName}
         </div>
     </div>
-);
+        );
+    }
+};
 
 export default ContestPreview;
