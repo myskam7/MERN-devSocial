@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
 
 class ContestPreview extends Component {
@@ -10,20 +10,20 @@ class ContestPreview extends Component {
     render() {
         return(
             <div className="ContestPreview" onClick={this.handleClick}> 
-                <div className="category-name">
-                    {contest.categoryName}
+                <div className="link category-name">
+                    {this.props.categoryName}
                 </div>
-                <div className="contest-name">
-                    {contest.contestName}
+                <div className="link contest-name">
+                    {this.props.contestName}
                 </div>
             </div>
         );
     }
-};
-
-ContestPreview.propTypes = {
-    categoryName: React.PropTypes.string.isRequired,
-    contestName: React.PropTypes.string.isRequired
 }
+
+// ContestPreview.propTypes = {
+//     categoryName: React.PropTypes.string,
+//     contestName: React.PropTypes.string
+// }
 
 export default ContestPreview;

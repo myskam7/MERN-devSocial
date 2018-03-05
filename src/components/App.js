@@ -21,17 +21,15 @@ class App extends Component {
         }
     
     
-    render(){
+        render(){
+            return (
 
-
-    return (
-
-        <div className="App">
-            <Header message={this.state.pageHeader} />  
-           <ContestList contests={this.state.contests} />
-        </div>
-    );
-  } 
+                <div className="App">
+                    <Header message={this.state.pageHeader} />  
+                    <ContestList contests={this.state.contests} />
+                </div>
+            );
+    } 
 };
 
 export default App;

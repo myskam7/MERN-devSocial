@@ -1,15 +1,16 @@
 import React from 'react';
 
+
 import ContestPreview from './ContestPreview'; 
 
 
 const ContestList = ({contests}) => {
     return (
-        <div>
+        <div className="ContestList" >
         {contests.map(contest => 
          //key is for identifying each new data change
          <ContestPreview key={contest.id} {...contest} /> 
-     )};
+     )}
      </div>
     );
 
