@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 
 import Header from './Header';
-import ContestPreview from './ContestPreview'; 
+import ContestList from './ContestList';
 
 class App extends Component {
     state = {
@@ -28,12 +28,7 @@ class App extends Component {
 
         <div className="App">
             <Header message={this.state.pageHeader} />  
-            <div>
-               {this.state.contests.map(contest => 
-                //key is for identifying each new data change
-                <ContestPreview key={contest.id} {...contest} /> 
-            )};
-            </div>
+           <ContestList contests={this.state.contests} />
         </div>
     );
   } 
