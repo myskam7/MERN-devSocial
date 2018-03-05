@@ -24,6 +24,7 @@ class ContestPreview extends Component {
 // ContestPreview.propTypes = {
 //     categoryName: React.PropTypes.string,
 //     contestName: React.PropTypes.string
+//     onClick: React.PropTypes.func.isRequired
 // }
 
 export default ContestPreview;

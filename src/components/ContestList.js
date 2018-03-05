@@ -4,18 +4,22 @@ import React from 'react';
 import ContestPreview from './ContestPreview'; 
 
 
-const ContestList = ({contests}) => {
+const ContestList = ({contests, onContestClick}) => {
     return (
         <div className="ContestList" >
         {contests.map(contest => 
          //key is for identifying each new data change
-         <ContestPreview key={contest.id} {...contest} /> 
+         <ContestPreview 
+         onClick={onContestClick}
+         key={contest.id} 
+         {...contest} /> 
      )}
      </div>
     );
 
     ContestList.propTypes   = {
-        contests: React.PropTypes.array
+        contests: React.PropTypes.array,
+        onContestClick: React.PropTypes.func.isRequired
     }
 
 }
