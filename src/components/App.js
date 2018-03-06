@@ -42,8 +42,8 @@ class App extends Component {
                         ...this.state.contests,
                         [contest.id]: contest
                     }
-                })
-            })
+                });
+            });
 
            
         };
