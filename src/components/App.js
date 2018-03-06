@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
-import Contest from './Contest''
+import Contest from './Contest';
 import Header from './Header';
 import ContestList from './ContestList';
 
@@ -38,12 +38,14 @@ class App extends Component {
             })
         };
        currentContent() {
-           if (this.state.currentContestId) {}
-          return <Contest {...this.state.contests[this.state.currentContestId]} />;
+           if (this.state.currentContestId) { 
+               return <Contest {...this.state.contests[this.state.currentContestId]} />;
+            }
+           return  <ContestList 
+           onContestClick={this.fetchContest}
+           contests={this.state.contests} />;
        }
-       return  <ContestList 
-                onContestClick={this.fetchContest}
-                contests={this.state.contests} />;
+      
     
         render(){
             return (
