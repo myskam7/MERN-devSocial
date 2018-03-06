@@ -1,5 +1,4 @@
 //all api logic 
-
 import axios from 'axios';
 
 export const fetchContest = contestId => {
