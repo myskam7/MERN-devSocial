@@ -10,7 +10,7 @@ import data from './testData';
 // axios.get('/api/contests')
 //     .then(res => {
 ReactDOM.render(
-    <App initialContests={window.initialData.contests} />,
+    <App initialData={window.initialData} />,
     document.getElementById('root')
 );
     // })

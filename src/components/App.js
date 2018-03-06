@@ -13,9 +13,11 @@ const pushState = (obj, url) =>
 
 
 class App extends Component {
-    state = {
-            contests: this.props.initialContests
-        };
+    static propTypes = {
+        initialData: PropTypes.object.isRequired
+    }
+    //this state is top level
+    state = this.props.initialData;
 
         componentDidMount(){
             
