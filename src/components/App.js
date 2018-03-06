@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import Contest from './Contest';
 import Header from './Header';
 import ContestList from './ContestList';
+import * as api from '../api';
 
 //history entries
 const pushState = (obj, url) => 
@@ -26,16 +27,25 @@ class App extends Component {
 
         }
 
-        fetchContest =(contestId) => {
+        fetchContest = (contestId) => {
             pushState(
                 { currentContestId: contestId },
                 `/contest/${contestId}`
             );
 
-            this.setState({
-                pageHeader: this.state.contests[contestId].contestName,
-                currentContestId: contestId
+            api.fetchContest(contestId)
+            .then(contest => {
+                this.setState({
+                    pageHeader: contest.contestName,
+                    currentContestId: contest.id,
+                    contests: {
+                        ...this.state.contests,
+                        [contest.id]: contest
+                    }
+                })
             })
+
+           
         };
        currentContent() {
            if (this.state.currentContestId) { 
