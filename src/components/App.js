@@ -10,7 +10,11 @@ import * as api from '../api';
 const pushState = (obj, url) => 
     window.history.pushState(obj, '', url);
 
-
+//controlling the browser back and forward links
+const onPopState = handler =>  {
+    window.onpopstate = handler; 
+};
+   
 
 class App extends Component {
     static propTypes = {
@@ -20,7 +24,13 @@ class App extends Component {
     state = this.props.initialData;
 
         componentDidMount(){
-            
+            //
+          onPopState(e => {
+              console.log(e.state);
+              this.setState({
+                  currentContestId: (e.state || {}).currentContestId
+              });
+          });
 
         }
         componentWillUnmount(){
