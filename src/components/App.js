@@ -54,7 +54,7 @@ class App extends Component {
                 '/'
             );
 
-            api.fetchContest()
+            api.fetchContestList()
             .then(contests => {
                 this.setState({
                     currentContestId: null,
