@@ -34,8 +34,8 @@ class App extends Component {
 
         }
         componentWillUnmount(){
-            console.log('unmounted');
-
+            //to clear popState
+            onPopState(null);
         }
 
         fetchContest = (contestId) => {

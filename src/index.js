@@ -17,11 +17,10 @@ ReactDOM.render(
     // .catch(console.error);
 
 
-
-
+//For Testing
 // setTimeout(()=> {
 //     ReactDOM.render(
-//         <h2>...</h2>,
+//         <h2>Clear</h2>,
 //         document.getElementById('root')
 //     );
 // }, 4000)
