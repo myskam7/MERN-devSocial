@@ -45,8 +45,26 @@ class App extends Component {
                 });
             });
 
-           
         };
+
+        //button 
+        fetchContestList = () => {
+            pushState(
+                { currentContestId: null },
+                '/'
+            );
+
+            api.fetchContest()
+            .then(contests => {
+                this.setState({
+                    currentContestId: null,
+                    contests
+                });
+            });
+        };
+
+           
+        
         // FUNCTOINS pageHeader(), currentContest(), currentContent(),
         pageHeader() {
             if (this.state.currentContestId){
@@ -58,9 +76,14 @@ class App extends Component {
         currentContest() {
             return this.state.contests[this.state.currentContestId];
         }
-       currentContent() {
+
+        
+        
+        currentContent() {
            if (this.state.currentContestId) { 
-               return <Contest {...this.currentContest()} />;
+               return <Contest 
+                contestListClick={this.fetchContestList}
+                {...this.currentContest()} />;
             }
            return  <ContestList 
            onContestClick={this.fetchContest}
