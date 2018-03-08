@@ -7,8 +7,6 @@ import { ClientRequest } from 'http';
 import { isNumber } from 'util';
 
 
-
-
 let mdb; 
 
 MongoClient.connect(config.mongodbUri, (err, client) => {
@@ -40,6 +38,27 @@ router.get('/contests', (req, res) => {
         }
 
         contests[contest.id] = contest; 
+        
+    });
+});
+
+
+router.get('/names/:nameIds', (req, res) => {
+
+    const nameIds = req.params.nameIds.split(',').map(Number);
+    const collection = mdb.collection('names');
+    let names = {};
+
+  collection.find({id: { $in: nameIds }})
+    .each((err, name) => {
+        assert.equal(null, err);
+
+        if(!name){ // no more names
+            res.send({names});
+            return; 
+        }
+
+        names[name.id] = name; 
         
     });
 });
