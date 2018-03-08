@@ -2,8 +2,9 @@ import {MongoClient} from 'mongodb';
 import assert from 'assert'; 
 import config from './config';
 
-MongoClient.connect(config.mongodbUri, (err, db) => {
+MongoClient.connect(config.mongodbUri, (err, client) => {
     assert.equal(null,err);
+    const db = client.db('testing');
 
     db.collection('contests').insertMany([
         { id: 1, categoryName: 'Business/Company', contestName: 'Cognitive Building Bricks',
@@ -42,7 +43,7 @@ MongoClient.connect(config.mongodbUri, (err, db) => {
         ])
         .then(res => {
             console.log('Names ', res.insertedCount);
-            db.close(); 
+            client.close(); 
         });
     });
 });
