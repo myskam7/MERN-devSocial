@@ -4,6 +4,7 @@ import assert from 'assert'; //for catching connection errors
 
 import config from '../config';
 import { ClientRequest } from 'http';
+import { isNumber } from 'util';
 
 
 
@@ -34,7 +35,7 @@ router.get('/contests', (req, res) => {
         assert.equal(null, err);
 
         if(!contest){ // no more contests
-            res.send(contests);
+            res.send({contests});
             return; 
         }
 
@@ -44,6 +45,10 @@ router.get('/contests', (req, res) => {
 });
 
 router.get('/contests/:contestId', (req, res) => {
+    const collection = mdb.collection('contests');
+    collection.findOne({ id: Number(req.params.contestId) })
+    .then(contest => res.send(contest))
+    .catch(console.error);
    
 });
 
