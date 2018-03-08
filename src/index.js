@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 // import axios from 'axios'; 
 
 import App from './components/App';
-import data from './testData';
+// import data from './testData';
 
 // console.log(data.contests);
 
