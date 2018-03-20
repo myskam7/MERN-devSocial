@@ -38,7 +38,7 @@ class Contest extends Component {
                         <div className="input-group">
                             <input type="text" placeholder="New Name Here..." className="form-control" />
                             <span className="input-group-btn">
-                                <button type="submit" className="btn btn-info">Submit</button>"
+                                <button type="submit" className="btn btn-info">Submit</button>
                             </span>
                         </div>
                     </form>
