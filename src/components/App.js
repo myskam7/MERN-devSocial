@@ -93,6 +93,7 @@ class App extends Component {
            if (this.state.currentContestId) { 
                return <Contest 
                 contestListClick={this.fetchContestList}
+                fetchNames={this.fetchNames}
                 {...this.currentContest()} />;
             }
            return  <ContestList 

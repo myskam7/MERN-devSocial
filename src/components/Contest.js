@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 class Contest extends Component {
+    componentDidMount(){
+        this.props.fetchNames(this.props.nameIds);
+    }
+
+
     render() {
         return(
             
@@ -56,6 +61,8 @@ class Contest extends Component {
 Contest.propTypes = { 
     description: PropTypes.string.isRequired,
     contestListClick: PropTypes.func.isRequired,
+    fetchNames: PropTypes.func.isRequired,
+    nameIds: PropTypes.array.isRequired
 };
 
 export default Contest;
