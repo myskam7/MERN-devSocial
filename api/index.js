@@ -45,23 +45,28 @@ router.get('/contests', (req, res) => {
 
 router.get('/names/:nameIds', (req, res) => {
 
-    const nameIds = req.params.nameIds.split(',').map(Number);
-    const collection = mdb.collection('names');
+    
     let names = {};
+    
+    setTimeout(() => {
+        const nameIds = req.params.nameIds.split(',').map(Number);
+        const collection = mdb.collection('names');
+        collection.find({id: { $in: nameIds }})
+            .each((err, name) => {
+                assert.equal(null, err);
 
-  collection.find({id: { $in: nameIds }})
-    .each((err, name) => {
-        assert.equal(null, err);
+                if(!name){ // no more names
+                    res.send({names});
+                    
+                    return; 
+                }
 
-        if(!name){ // no more names
-            res.send({names});
-            return; 
-        }
-
-        names[name.id] = name; 
+                names[name.id] = name; 
+                console.log(name);
+            });
+    }, 4000)
         
-    });
-});
+ });
 
 router.get('/contests/:contestId', (req, res) => {
     const collection = mdb.collection('contests');

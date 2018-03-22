@@ -76,6 +76,9 @@ class App extends Component {
         
 
         fetchNames = (nameIds) => {
+            if(nameIds.length === 0){
+                return;
+            }
             api.fetchNames(nameIds)
             .then(names => {
                 this.setState({
