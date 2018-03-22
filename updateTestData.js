@@ -1,6 +1,7 @@
 import { MongoClient } from 'mongodb';
 import assert from 'assert';
 import config from './config';
+import { CLIENT_RENEG_LIMIT } from 'tls';
 
 MongoClient.connect(config.mongodbUri, (err, client) => {
     assert.equal(null, err); 
@@ -26,7 +27,7 @@ MongoClient.connect(config.mongodbUri, (err, client) => {
             ).then(() => {
                 console.log('Updated', contest._id);
                 contestCount--; 
-                if(contestCount === 0) { db.close(); }
+                if(contestCount === 0) { client.close(); }
             });
         })
         .catch(console.error);
