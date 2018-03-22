@@ -29,8 +29,12 @@ class Contest extends Component {
                 </div>
                 <div className="panel-body">
                     <ul className="list-group">
-                        <li className="list-group-item">Name One...</li>
-                        <li className="list-group-item">Name Two...</li>
+                       {this.props.nameIds.map(nameId => 
+                           <li key={nameId} className="list-group-item">
+                            {this.props.lookupName(nameId).name}
+                           </li>
+                         
+                       )}
                     </ul>
                 </div>
 
@@ -62,7 +66,8 @@ Contest.propTypes = {
     description: PropTypes.string.isRequired,
     contestListClick: PropTypes.func.isRequired,
     fetchNames: PropTypes.func.isRequired,
-    nameIds: PropTypes.array.isRequired
+    nameIds: PropTypes.array.isRequired,
+    lookupName: PropTypes.func.isRequired
 };
 
 export default Contest;

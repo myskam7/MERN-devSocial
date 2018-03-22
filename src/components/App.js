@@ -73,7 +73,25 @@ class App extends Component {
             });
         };
 
-           
+        
+
+        fetchNames = (nameIds) => {
+            api.fetchNames(nameIds)
+            .then(names => {
+                this.setState({
+                    names
+                });
+            });
+        };
+
+        lookupName = (nameId) => {
+            if(!this.state.names || !this.state.names[nameId]){
+                return {
+                    name: '...'
+                };
+            }
+            return this.state.names[nameId];
+        };
         
         // FUNCTOINS pageHeader(), currentContest(), currentContent(),
         pageHeader() {
@@ -82,10 +100,7 @@ class App extends Component {
             }
             return 'Naming Contests';
         }
-
-        currentContest() {
-            return this.state.contests[this.state.currentContestId];
-        }
+        
 
         
         
@@ -94,12 +109,17 @@ class App extends Component {
                return <Contest 
                 contestListClick={this.fetchContestList}
                 fetchNames={this.fetchNames}
+                lookupName={this.lookupName}
                 {...this.currentContest()} />;
             }
            return  <ContestList 
            onContestClick={this.fetchContest}
            contests={this.state.contests} />;
        }
+
+       currentContest() {
+        return this.state.contests[this.state.currentContestId];
+    }
       
     
         render(){
