@@ -8,7 +8,7 @@ class ContestPreview extends Component {
     // }
 
     handleClick = () => {
-        this.props.onClick(this.props.id);
+        this.props.onClick(this.props._id);
         // console.log(this.props.contestName);
     }
 
@@ -27,7 +27,7 @@ class ContestPreview extends Component {
 }
 
 ContestPreview.propTypes = {
-    id: PropTypes.number.isRequired,
+    _id: PropTypes.string.isRequired,
     categoryName: PropTypes.string,
     contestName: PropTypes.string,
     onClick: PropTypes.func.isRequired
