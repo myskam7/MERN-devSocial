@@ -1,5 +1,5 @@
 import express from 'express';
-import { MongoClient} from 'mongodb';
+import { MongoClient, ObjectID} from 'mongodb';
 import assert from 'assert'; //for catching connection errors
 
 import config from '../config';
@@ -25,7 +25,6 @@ router.get('/contests', (req, res) => {
     let contests = {};
   collection.find({})
     .project({
-        id: 1,
         categoryName: 1,
         contestName: 1
     })
@@ -37,7 +36,7 @@ router.get('/contests', (req, res) => {
             return; 
         }
 
-        contests[contest.id] = contest; 
+        contests[contest._id] = contest; 
         
     });
 });
@@ -49,9 +48,9 @@ router.get('/names/:nameIds', (req, res) => {
     let names = {};
     
     setTimeout(() => {
-        const nameIds = req.params.nameIds.split(',').map(Number);
+        const nameIds = req.params.nameIds.split(',').map(ObjectID);
         const collection = mdb.collection('names');
-        collection.find({id: { $in: nameIds }})
+        collection.find({ _id: { $in: nameIds }})
             .each((err, name) => {
                 assert.equal(null, err);
 
@@ -61,7 +60,7 @@ router.get('/names/:nameIds', (req, res) => {
                     return; 
                 }
 
-                names[name.id] = name; 
+                names[name._id] = name; 
                 console.log(name);
             });
     }, 4000)
