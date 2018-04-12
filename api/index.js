@@ -11,7 +11,7 @@ let mdb;
 
 MongoClient.connect(config.mongodbUri, (err, client) => {
     assert.equal(null, err);
-     const db = client.db('testing');
+     const db = client.db('test');
 
    mdb = db
 }); 

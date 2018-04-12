@@ -4,7 +4,9 @@ import config from './config';
 
 MongoClient.connect(config.mongodbUri, (err, client) => {
     assert.equal(null,err);
-    const db = client.db('testing');
+    const db = client.db('test');
+
+    // db.collection.ensureIndex({"secondfidield":1}, { unique: true , dropDups: true} )
 
     db.collection('contests').insertMany([
         { id: 1, categoryName: 'Business/Company', contestName: 'Cognitive Building Bricks',
@@ -43,7 +45,7 @@ MongoClient.connect(config.mongodbUri, (err, client) => {
         ])
         .then(res => {
             console.log('Names ', res.insertedCount);
-            client.close(); 
-        });
+            client.close();
+        })
     });
 });
