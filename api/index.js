@@ -69,7 +69,7 @@ router.get('/names/:nameIds', (req, res) => {
 
 router.get('/contests/:contestId', (req, res) => {
     const collection = mdb.collection('contests');
-    collection.findOne({ id: Number(req.params.contestId) })
+    collection.findOne({ id: ObjectID(req.params.contestId) })
     .then(contest => res.send(contest))
     .catch(console.error);
    
