@@ -75,4 +75,8 @@ router.get('/contests/:contestId', (req, res) => {
    
 });
 
+router.post('/names', (req,res) => {
+
+})
+
 export default router; 
