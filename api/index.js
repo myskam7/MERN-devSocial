@@ -90,12 +90,16 @@ router.post('/names', (req,res) => {
         { $push: { nameIds: result.insertedId }},
         {new: true}
 
-    )).then(doc => res.send({
+    ).then(doc => res.send({
         updatedContest: doc.value, 
         newName: { _id: result.insertedId, name}
 
-    }))
-
+    })
+  )
+).catch(error => {
+    console.error(error)
+    res.status(404).send("Request Not Good");
+ }); 
 
 });
 
