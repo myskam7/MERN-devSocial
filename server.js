@@ -2,12 +2,14 @@ import express from 'express';
 import fs from 'fs';
 import sassMiddleware from 'node-sass-middleware';
 import path from 'path';
+import bodyParser from 'body-parser';
 
 import apiRouter from './api';
 import config from './config';
 
 const server = express();
 
+server.use(bodyParser.json());
 
 
 //SASS

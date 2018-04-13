@@ -76,7 +76,27 @@ router.get('/contests/:contestId', (req, res) => {
 });
 
 router.post('/names', (req,res) => {
+    //incert name..
+    const name = req.body.newName;
+    const contestId = ObjectID(req.body.contestId);
 
-})
+    //Validation..
+
+    //update list of names..
+    mdb.collection('names').insertOne({ name })
+    .then(result => mdb.collection('contests').findAndModify(
+        {_id: contestId},
+        [],
+        { $push: { nameIds: result.insertedId }},
+        {new: true}
+
+    )).then(doc => res.send({
+        updatedContest: doc.value, 
+        newName: { _id: result.insertedId, name}
+
+    }))
+
+
+});
 
 export default router; 
