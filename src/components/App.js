@@ -104,7 +104,9 @@ class App extends Component {
             return 'Naming Contests';
         }
         
+        addName = (newName, contestId) => {
 
+        }; 
         
         
         currentContent() {
