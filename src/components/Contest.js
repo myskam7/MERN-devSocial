@@ -6,6 +6,11 @@ class Contest extends Component {
         this.props.fetchNames(this.props.nameIds);
     }
 
+    handleSubmit = (e) => {
+        e.preventDefault();
+        console.log(this.refs.newNameInput.value);
+    }
+
 
     render() {
         return(
@@ -43,9 +48,9 @@ class Contest extends Component {
                     <h3 className="panel-title">Suggest A Name</h3>
                 </div>
                 <div className="panel-body">
-                    <form>
+                    <form onSubmit={this.handleSubmit}>
                         <div className="input-group">
-                            <input type="text" placeholder="New Name Here..." className="form-control" />
+                            <input type="text" placeholder="New Name Here..." ref="newNameInput" className="form-control" />
                             <span className="input-group-btn">
                                 <button type="submit" className="btn btn-info">Submit</button>
                             </span>
