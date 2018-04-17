@@ -10,10 +10,10 @@ import { isNumber } from 'util';
 let mdb; 
 
 MongoClient.connect(config.mongodbUri, (err, client) => {
-    assert.equal(null, err);
-     const db = client.db('test');
+  assert.equal(null, err);
+  const db = client.db('test');
 
-   mdb = db
+  mdb = db;
 }); 
 
 const router = express.Router();
@@ -21,22 +21,22 @@ const router = express.Router();
 
 
 router.get('/contests', (req, res) => {
-    const collection = mdb.collection('contests');
-    let contests = {};
+  const collection = mdb.collection('contests');
+  let contests = {};
   collection.find({})
     .project({
-        categoryName: 1,
-        contestName: 1
+      categoryName: 1,
+      contestName: 1
     })
     .each((err, contest) => {
-        assert.equal(null, err);
+      assert.equal(null, err);
 
-        if(!contest){ // no more contests
-            res.send({contests});
-            return; 
-        }
+      if(!contest){ // no more contests
+        res.send({contests});
+        return; 
+      }
 
-        contests[contest._id] = contest; 
+      contests[contest._id] = contest; 
         
     });
 });
@@ -45,61 +45,62 @@ router.get('/contests', (req, res) => {
 router.get('/names/:nameIds', (req, res) => {
 
     
-    let names = {};
+  let names = {};
     
-    setTimeout(() => {
-        const nameIds = req.params.nameIds.split(',').map(ObjectID);
-        const collection = mdb.collection('names');
-        collection.find({ _id: { $in: nameIds }})
-            .each((err, name) => {
-                assert.equal(null, err);
+  setTimeout(() => {
+    const nameIds = req.params.nameIds.split(',').map(ObjectID);
+    const collection = mdb.collection('names');
+    collection.find({ _id: { $in: nameIds }})
+      .each((err, name) => {
+        assert.equal(null, err);
 
-                if(!name){ // no more names
-                    res.send({names});
+        if(!name){ // no more names
+          res.send({names});
                     
-                    return; 
-                }
+          return; 
+        }
 
-                names[name._id] = name; 
-                console.log(name);
-            });
-    }, 4000)
+        names[name._id] = name; 
+        // console.log(name);
+      });
+  }, 4000);
         
- });
+});
 
 router.get('/contests/:contestId', (req, res) => {
-    const collection = mdb.collection('contests');
-    collection.findOne({ _id: ObjectID(req.params.contestId) })
+  const collection = mdb.collection('contests');
+  collection.findOne({ _id: ObjectID(req.params.contestId) })
     .then(contest => res.send(contest))
     .catch(console.error);
    
 });
 
 router.post('/names', (req,res) => {
-    //incert name..
-    const name = req.body.newName;
-    const contestId = ObjectID(req.body.contestId);
+  //incert name..
+  const name = req.body.newName;
+  const contestId = ObjectID(req.body.contestId);
 
-    //Validation..
+  //Validation..
 
-    //update list of names..
-    mdb.collection('names').insertOne({ name })
+  //update list of names..
+  mdb.collection('names').insertOne({ name })
     .then(result => mdb.collection('contests').findAndModify(
-        {_id: contestId},
-        [],
-        { $push: { nameIds: result.insertedId }},
-        {new: true}
+      {_id: contestId},
+      [],
+      { $push: { nameIds: result.insertedId }},
+      {new: true}
 
     ).then(doc => res.send({
-        updatedContest: doc.value, 
-        newName: { _id: result.insertedId, name}
+      updatedContest: doc.value, 
+      newName: { _id: result.insertedId, name}
 
     })
-  )
-).catch(error => {
-    console.error(error)
-    res.status(404).send("Request Not Good");
- }); 
+    )
+    ).catch(error => {
+      console.error(error);
+      res.status(404).send('Request Not Good');
+    }); 
+
 
 });
 

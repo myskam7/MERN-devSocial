@@ -11,25 +11,25 @@ import { fetchContest } from './src/api';
 
 //get api url based on contestID
 const getApiUrl = contestId => {
-    if(contestId) {
-        return `${config.serverUrl}/api/contests/${contestId}`;
-    }
-    return `${config.serverUrl}/api/contests`;
+  if(contestId) {
+    return `${config.serverUrl}/api/contests/${contestId}`;
+  }
+  return `${config.serverUrl}/api/contests`;
 };
 
 // read Initial Data based on received contestId
 const getInitialData = (contestId, apiData) => {
-    if(contestId) {
-        return {
-            currentContestId: apiData._id,
-            contests: {
-                [apiData._id]: apiData
-            }
-        }       
-    }
+  if(contestId) {
     return {
-        contests: apiData.contests
-    }
+      currentContestId: apiData._id,
+      contests: {
+        [apiData._id]: apiData
+      }
+    };       
+  }
+  return {
+    contests: apiData.contests
+  };
 };
 
 
@@ -38,16 +38,16 @@ const getInitialData = (contestId, apiData) => {
 const serverRender = (contestId) => 
 //'config.serverUrl' is the dynamic http://localhost:####
 //Initiating on load
-axios.get(getApiUrl(contestId))
-   .then(res => {
-       const initialData = getInitialData(contestId, res.data); 
-       return {
-           initialMarkup: ReactDOMServer.renderToString(
-               <App initialData={initialData} /> 
-            ),
-           initialData
-       };
-   })
-   .catch(console.error);
+  axios.get(getApiUrl(contestId))
+    .then(res => {
+      const initialData = getInitialData(contestId, res.data); 
+      return {
+        initialMarkup: ReactDOMServer.renderToString(
+          <App initialData={initialData} /> 
+        ),
+        initialData
+      };
+    })
+    .catch(console.error);
 
-     export default serverRender;
+export default serverRender;
