@@ -1,5 +1,4 @@
-// import express from 'express';
-import express, { static } from "express";
+import express, {static} from "express";
 import fs from "fs";
 import sassMiddleware from "node-sass-middleware";
 import { join } from "path";
