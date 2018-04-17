@@ -43,8 +43,9 @@ server.get(['/', '/contest/:contestId'], (req, res) => {
 server.use('/api', apiRouter);
 server.use(express.static('public'));
 
+var PORT = process.env.PORT || 5000
 
-server.listen(port, host, () => {
-  console.info('Express listening on port ', port);
+server.listen(PORT => {
+  console.log(PORT);
 });
 
