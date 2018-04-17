@@ -4,7 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon --exec babel-node server.js --public/",
+    "start": "babel-node server.js --public/",
     "dev": "webpack -wd"
   },
   "repository": {
