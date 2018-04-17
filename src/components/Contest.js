@@ -9,6 +9,7 @@ class Contest extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
         this.props.addName(this.refs.newNameInput.value, this.props._id);
+        this.refs.newNameInput.value = '';
     }
 
 

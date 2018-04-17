@@ -15,3 +15,8 @@ export const fetchNames = nameIds => {
     return axios.get(`/api/names/${nameIds.join(',')}`)
     .then(res => res.data.names);
 }; 
+
+ export const addName = (newName, contestId) => {
+     return axios.post('/api/names', {newName, contestId})
+     .then(reps => reps.data);
+ }
