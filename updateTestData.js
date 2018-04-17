@@ -43,7 +43,7 @@ import config from './config';
 
 MongoClient.connect(config.mongodbUri, (err, client) => {
   assert.equal(null, err);
-  const db = client.db('heroku_pszpt1jr');
+  const db = client.db('heroku_kzxgt5j1');
 
   let contestCount = 0;
   db.collection('contests').find({}).each((err, contest) => {
