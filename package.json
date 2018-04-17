@@ -4,7 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "node --exec babel-node server.js --ignore public/",
+    "start": "babel-node server.js --ignore public/",
     "dev": "webpack -wd"
   },
   "repository": {
