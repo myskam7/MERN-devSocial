@@ -10,8 +10,8 @@ export const logStars = (message) => {
 };
 
 export default {
-  mongodbUri: 'mongodb://heroku_pszpt1jr:heroku1@ds249269.mlab.com:49269/heroku_pszpt1jr',
-  port: env.PORT || 8080,
+  mongodbUri: 'mongodb://dbUser:myskam7@ds247569.mlab.com:47569/heroku_kzxgt5j1',
+  port: env.PORT || 5000,
   host: env.HOST || '0.0.0.0', // binds to all IPs on machine
   get serverUrl() {
     return `http://${this.host}:${this.port}`;

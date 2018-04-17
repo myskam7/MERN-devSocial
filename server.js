@@ -1,11 +1,11 @@
-import express, {static} from "express";
+import express from "express";
 import fs from "fs";
 import sassMiddleware from "node-sass-middleware";
 import { join } from "path";
 import { json } from "body-parser";
-
 import apiRouter from "./api";
 import { port, host } from "./config";
+
 
 const server = express();
 
@@ -41,7 +41,7 @@ server.get(['/', '/contest/:contestId'], (req, res) => {
 
 //Express middleware to access folders
 server.use('/api', apiRouter);
-server.use(static('public'));
+server.use(express.static('public'));
 
 
 server.listen(port, host, () => {
