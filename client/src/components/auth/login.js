@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import axios from 'axios'; 
+import classnames from 'classnames';
 
 class Login extends Component {
     constructor() {
@@ -12,17 +14,21 @@ class Login extends Component {
     }
     onChange(e) {
         this.setState({[e.target.name]: e.target.value})
-    }
+    } 
     onSubmit(e) {
         e.preventDefault(); 
-        const logIn = {
+        const user = {
             email: this.state.email,
             password: this.state.password
         }
-        console.log(logIn);
-    }
+        axios.post('/api/users/login', user)
+        .then(res => console.log(res.data))
+        .catch(err => this.setState({errors: err.response.data}));
+    } 
 
   render() {
+
+    const { errors } = this.state;
     return (
      
       <div>
@@ -35,7 +41,7 @@ class Login extends Component {
             <form onSubmit={this.onSubmit}>
               <div className="form-group">
                 <input type="email"
-                 className="form-control form-control-lg"
+                 className='form-control form-control-lg'
                  placeholder="Email Address"
                  name="email"
                  value={this.state.email}
@@ -44,7 +50,7 @@ class Login extends Component {
               </div>
               <div className="form-group">
                 <input type="password"
-                 className="form-control form-control-lg"
+                 className='form-control form-control-lg'
                  placeholder="Password
                 " name="password"
                  value={this.state.password}
