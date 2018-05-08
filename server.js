@@ -1,50 +1,42 @@
-import express from "express";
-import fs from "fs";
-import sassMiddleware from "node-sass-middleware";
-import { join } from "path";
-import { json } from "body-parser";
-import apiRouter from "./api";
-import { port, host } from "./config";
+const express = require('express'); 
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+const passport = require('passport');
+
+// api routes
+const users = require('./routes/api/users');
+const profile = require('./routes/api/profile');
+const posts = require('./routes/api/posts');
 
 
-const server = express();
+const app = express(); 
 
-server.use(json());
+//Body parser middleware
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
+//DB config
+const db = require('./config/keys').mongoURI; 
 
-//SASS
-server.use(sassMiddleware({
-  src: join(__dirname, 'sass'),
-  dest: join(__dirname, 'public')
-}));
+//connect to MONGOdb
+mongoose
+    .connect(db)
+    .then(() => console.log('MongoDB connected'))
+    .catch(err => console.log(err));
+     
 
+//Passport middleware
+app.use(passport.initialize());
 
-//Effective Javascript (EJS) 
-server.set('view engine', 'ejs');
+// Passport Config 
+require('./config/passport')(passport);
 
+//Use Routes
+app.use('/api/users', users);
+app.use('/api/profile', profile);
+app.use('/api/posts', posts);
 
-import serverRender from "./serverRender"; 
+const port = process.env.PORT || 5000; 
 
-server.get(['/', '/contest/:contestId'], (req, res) => {
-  serverRender(req.params.contestId)
-    .then(({initialMarkup, initialData}) => {
-      res.render('index', {
-        initialMarkup,
-        initialData
-      });
-    })
-    .catch(error => {
-      console.error(error)
-      res.status(404).send("Request Not Good");
-    });  
-});
-
-//Express middleware to access folders
-server.use('/api', apiRouter);
-server.use(express.static('public'));
-
-
-server.listen(port, host, () => {
-  console.info('Express listening on port ', port);
-});
+app.listen(port, () => console.log(`Server is running on ${port}`));
 
