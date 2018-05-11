@@ -20,12 +20,12 @@ import { connect } from 'react-redux';
       <div className="container">
         <div className="row">
           <div className="col-md-12 text-center">
-            <h1 className="display-3 mb-4">Developer Connector
+            <h1 className="display-3 mb-4">devsSocial
             </h1>
-            <p className="lead"> Create a developer profile/portfolio, share posts and get help from other developers</p>
+            <p className="lead"> Create a developer profile/portfolio, share posts and interact with other developers</p>
             <hr />
-            <Link to="/register" className="btn btn-lg btn-info mr-2">Sign Up</Link>
-            <Link to="/login" className="btn btn-lg btn-light">Login</Link>
+            <Link to="/register" className="btn btn-lg btn-light mr-2 text-danger">Sign Up</Link>
+            <Link to="/login" className="btn btn-lg btn-light text-success">Login</Link>
           </div>
         </div>
       </div>

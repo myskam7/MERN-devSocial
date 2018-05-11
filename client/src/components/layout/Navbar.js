@@ -62,26 +62,29 @@ class Navbar extends Component {
     );
 
     return (
-      <nav className="navbar navbar-expand-sm navbar-dark bg-dark mb-4">
+      <nav className="navbar navbar-expand-lg navbar-light bg-light mb-4" >
         <div className="container">
-          <Link className="navbar-brand" to="/">
-            DevConnector
+          <Link className="navbar-brand text-warning" to="/">
+            <h4>Devs Social</h4>
           </Link>
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-toggle="collapse"
-            data-target="#mobile-nav"
-          >
+          <button 
+           className="navbar-toggler"
+           type="button" 
+           data-toggle="collapse"
+            data-target="#navbarColor03" 
+            aria-controls="navbarColor03" 
+            aria-expanded="true" 
+            aria-label="Toggle navigation">
             <span className="navbar-toggler-icon" />
           </button>
 
-          <div className="collapse navbar-collapse" id="mobile-nav">
+          <div className="collapse navbar-collapse" id="navbarColor03">
             <ul className="navbar-nav mr-auto">
-              <li className="nav-item">
+              <li className="nav-item active">
                 <Link className="nav-link" to="/profiles">
                   {' '}
                   Developers
+                  <span className="sr-only">(current)</span>
                 </Link>
               </li>
             </ul>
@@ -89,6 +92,7 @@ class Navbar extends Component {
           </div>
         </div>
       </nav>
+
     );
   }
 }

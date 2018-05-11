@@ -3,8 +3,8 @@ import React from 'react'
 export default () => {
   return (
    
-    <footer className="bg-dark text-white mt-5 p-4 text-center navbar-fixed-bottom">
-    Copyright &copy; {new Date().getFullYear()} DevConnector
+    <footer className="bg-light text-dark mt-5 p-4 text-center navbar-fixed-bottom">
+    Copyright &copy; {new Date().getFullYear()} Devs Social
   </footer>
 
   )
