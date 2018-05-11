@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import propTypes, {PropTypes} from 'prop-types';
+import PropTypes from 'prop-types';
 import isEmpty from '../../validation/is-empty';
 
 class ProfileAbout extends Component {

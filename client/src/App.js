@@ -13,10 +13,17 @@ import Register from './components/auth/register';
 import Login from './components/auth/login';
 import Dashboard from './components/dashboard/Dashboard';
 import PrivateRoute from './components/common/PrivateRoute'; 
+
 import CreateProfile from './components/createprofile/CreateProfile';
 import EditProfile from './components/editprofile/EditProfile';
 import AddExperience from './components/addcredentials/AddExperience';
 import AddEducation from './components/addcredentials/AddEducation';
+import Profiles from './components/profiles/Profiles';
+import Profile from './components/profile/Profile';
+import NotFound from './components/not-found/NotFound';
+import Posts from './components/posts/Posts';
+import Post from './components/post/Post';
+
 
 import store from './store';
 import './App.css';
@@ -55,6 +62,8 @@ class App extends Component {
             <div className="container">
               <Route exact path="/register" component={ Register } />
               <Route exact path="/login" component={ Login } />
+              <Route exact path="/profiles" component={Profiles} />
+              <Route exact path="/profile/:handle" component={Profile} />
               <Switch>
               <PrivateRoute exact path="/dashboard" component={ Dashboard } />
               </Switch> <Switch>
@@ -85,6 +94,13 @@ class App extends Component {
               component={AddEducation}
             />
           </Switch>
+          <Switch>
+          <PrivateRoute exact path="/feed" component={Posts} />
+        </Switch>
+        <Switch>
+          <PrivateRoute exact path="/post/:id" component={Post} />
+        </Switch>
+          <Route exact path="/not-found" component={NotFound} />
             </div>
             <Footer />    
           </div>

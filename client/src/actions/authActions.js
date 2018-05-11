@@ -1,8 +1,8 @@
 import axios from 'axios'; 
 import jwt_decode from 'jwt-decode';
 
-import { GET_ERRORS } from './types';
-import { SET_CURRENT_USER } from './types';
+
+import { SET_CURRENT_USER, GET_ERRORS } from './types';
 import setAuthToken from '../utils/setAuthToken';
 
 // registerUser func & dispatch func 

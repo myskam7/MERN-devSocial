@@ -1,7 +1,7 @@
 {
   "name": "social-media-sample-mern",
   "version": "1.0.0",
-  "description": "<!--NOTES  jwt module creates token passport validates the tokent and extracts user's information -->",
+  "description": "<!--NOTES  Social Media for Developers Community -->",
   "main": "server.js",
   "scripts": {
     "client-install": "npm start --prefix client",
@@ -10,8 +10,8 @@
     "client:": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"cd client && npm start\""
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Maksym Filippov",
+  "license": "MIT",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.2",

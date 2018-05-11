@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'; 
 import { connect } from 'react-redux';
-import propTypes, { PropTypes} from 'prop-types';
+import PropTypes from 'prop-types';
 
 import { loginUser } from '../../actions/authActions';
 import TextFieldGroup from '../common/TextFieldGroup';
@@ -48,9 +48,7 @@ class Login extends Component {
             password: this.state.password
         }
         this.props.loginUser(userData);
-        // axios.post('/api/users/login', user)
-        // .then(res => console.log(res.data))
-        // .catch(err => this.setState({errors: err.response.data}));
+        
     } 
 
   render() {
@@ -64,7 +62,7 @@ class Login extends Component {
       <div className="container">
         <div className="row">
           <div className="col-md-8 m-auto">
-            <h1 className="display-4 text-center">Sign Up</h1>
+            <h1 className="display-4 text-center">Login</h1>
             <p className="lead text-center">Create your DevConnector account</p>
             <form noValidate onSubmit={this.onSubmit}>
           
