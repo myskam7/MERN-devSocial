@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import propTypes, {PropTypes} from 'prop-types';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import classnames from 'classnames';
 import { Link } from 'react-router-dom';

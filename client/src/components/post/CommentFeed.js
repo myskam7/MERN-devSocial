@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import propTypes, {PropTypes} from 'prop-types';
+import PropTypes from 'prop-types';
 import CommentItem from './CommentItem';
 
 class CommentFeed extends Component {

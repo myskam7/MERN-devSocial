@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import propTypes, {PropTypes} from 'prop-types';
+import PropTypes from 'prop-types';
 import { deleteComment } from '../../actions/postActions';
 
 class CommentItem extends Component {
