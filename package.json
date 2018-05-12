@@ -4,7 +4,6 @@
   "engines": {
     "node": "9.11.1"
   },
-
   "description": "<!--NOTES  Social Media for Developers Community -->",
   "main": "server.js",
   "scripts": {
@@ -29,5 +28,4 @@
     "react-moment": "^0.7.0",
     "validator": "^9.4.1"
   }
-  
 }
