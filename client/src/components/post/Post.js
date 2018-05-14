@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import PostItem from '../posts/PostItem';
 import CommentForm from './CommentForm';
 import CommentFeed from './CommentFeed';
-import Spinner from '../common/Spinner';
+// import Spinner from '../common/Spinner';
 import { getPost } from '../../actions/postActions';
 
 class Post extends Component {
@@ -18,7 +18,7 @@ class Post extends Component {
     let postContent;
 
     if (post === null || loading || Object.keys(post).length === 0) {
-      postContent = <Spinner />;
+      // postContent = <Spinner />;
     } else {
       postContent = (
         <div>
