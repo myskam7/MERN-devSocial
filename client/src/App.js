@@ -25,7 +25,7 @@ import Posts from './components/posts/Posts';
 import Post from './components/post/Post';
 
 
-// import store from './store';
+import store from './store';
 import './App.css';
 
 
