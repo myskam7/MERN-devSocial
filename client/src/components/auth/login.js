@@ -63,7 +63,7 @@ class Login extends Component {
         <div className="row">
           <div className="col-md-8 m-auto">
             <h1 className="display-4 text-center">Login</h1>
-            <p className="lead text-center">Create your DevConnector account</p>
+            <p className="lead text-center">Sign into your account</p>
             <form noValidate onSubmit={this.onSubmit}>
           
             <TextFieldGroup 
